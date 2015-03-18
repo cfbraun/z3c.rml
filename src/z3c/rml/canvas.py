@@ -13,9 +13,7 @@
 ##############################################################################
 """Page Drawing Related Element Processing
 """
-import zope.interface
-import reportlab.pdfgen.canvas
-from z3c.rml import attr, directive, interfaces, occurence, stylesheet
+from z3c.rml import attr, directive, interfaces, occurence
 from z3c.rml import chart, flowable, form, page, special
 
 
@@ -365,6 +363,7 @@ class Image(CanvasRMLDirective):
                 else:
                     kwargs['height'] = imgY * kwargs['width'] / imgX
 
+        kwargs.update({'mask': 'auto'})
         canvas = attr.getManager(self, interfaces.ICanvasManager).canvas
         getattr(canvas, self.callable)(**kwargs)
 
@@ -981,7 +980,7 @@ class IPageDrawing(IDrawing):
     directive creates a new page."""
 
     occurence.containing(
-        #'mergePage': IMergePage,
+        # 'mergePage': IMergePage,
         *IDrawing.getTaggedValue('directives'))
 
 class PageDrawing(Drawing):
@@ -1007,6 +1006,6 @@ class IPageInfo(interfaces.IRMLDirectiveSignature):
         required=True)
 
 class PageInfo(CanvasRMLDirective):
-    signature=IPageInfo
+    signature = IPageInfo
     callable = 'setPageSize'
     attrMapping = {'pageSize': 'size'}
