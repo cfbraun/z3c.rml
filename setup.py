@@ -41,9 +41,9 @@ TESTS_REQUIRE = [
     'zope.testrunner',
     ]
 
-setup (
+setup(
     name="z3c.rml",
-    version='2.8.1.dev0',
+    version='2.8.1.gag',
     author="Stephan Richter and the Zope Community",
     author_email="zope-dev@zope.org",
     description="An alternative implementation of RML",
@@ -66,7 +66,7 @@ setup (
         'Operating System :: OS Independent'],
     url='http://pypi.python.org/pypi/z3c.rml',
     packages=find_packages('src'),
-    package_dir={'':'src'},
+    package_dir={'': 'src'},
     namespace_packages=['z3c'],
     extras_require=dict(
         test=TESTS_REQUIRE,
